@@ -1,0 +1,119 @@
+html {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: rgb(9, 77, 9);
+  }
+
+  .card {
+    background-color: white;
+    width: 170px;
+    height: 250px;
+    border-radius: 20px;
+    text-align: center;
+    font-size: large;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    margin: 10px;
+    }
+
+  .card-top {
+    align-self: flex-start;
+    margin: 10px;
+
+  }
+
+  .card-middle {
+    align-self: center;
+    font-size: 60px;
+    margin: 5px;
+  }
+
+  .card-bottom {
+    align-self: flex-end;
+    transform: rotate(180deg);
+    margin: 10px;
+  }
+
+  .button {
+    background-color: #fffffF;
+    border: none;
+    color: black;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+  }
+
+  .hand {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: left;
+    justify-content: center;
+
+  }
+
+
+  .player-score {
+    justify-content: left;
+    font-size: 50px;
+  }
+
+  .dealer-score {
+    justify-content: left;
+    font-size: 50px;
+  }
+
+  #controls {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+  }
+
+  #controls button {
+    margin: 10px;
+    width: 100px;
+    height: 55px;
+  }
+
+
+  #overlay {
+    background-color: rgba(0, 0, 0, 0.5);
+    top: 0;
+    left: 0;
+    margin: 0;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    visibility: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+  }
+
+  #gameover {
+    background-color: #fff;
+    padding: 40px 10px;
+    margin: 0 auto;
+    width: 300px;
+    height: 100px;
+    display: inline-block;
+    text-align: center;
+    border-radius: 10px;
+  }
+
+#gameoverButton {
+  margin: 10px;
+  width: 100px;
+  height: 55px;
+}
