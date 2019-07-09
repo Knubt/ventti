@@ -1,7 +1,6 @@
 const express = require("express")
 const app = express()
-const http = require("http")
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 
 const baseUrl = '/api/v1';
