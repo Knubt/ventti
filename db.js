@@ -1,11 +1,12 @@
 const uuid = require('uuid/v1');
 const { Pool } = require('pg');
-
-const  connectionString = process.env.DATABASE_URL || 'postgresql://postgres:Jartturi123@localhost:5432/ventti';
+const dbURL = DATABASE_URL=$(heroku config:get DATABASE_URL -a afternoon-taiga-73934) your_process;
+const  connectionString = process.env.dbURL;
 console.log('Connection:', connectionString);
 
 const pool = new Pool({
-    connectionString
+    connectionString,
+    ssl: true
 });
 
 //Anna pelin tila
