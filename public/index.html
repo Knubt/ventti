@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="styles.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+    <header>
+        <div class="score">Player: <span id="player-score">0</span></div>
+        <h1>Ventti</h1>
+        <div class="score">Dealer: <span id="dealer-score">0</span></div>
+    </header>
+    <section class="hand" id="dealer-hand"></section>
+    <section class="hand" id="player-hand"></section>
+    <section id="controls">
+        <button id="hit">Hit</button>
+        <button id="stand">Stand</button>
+    </section>
+    <footer><div id="end-game">End current game</div></footer>
+    <div id="overlay" class="hidden">
+        <div id="gameover">
+            <p></p>
+            <button id="resumeButton">OK</button>
+        </div>
+       
+    </div>
+
+    <script type="module" src="game.js"></script>
+</body>
+
+</html>

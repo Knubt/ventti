@@ -1,49 +1,64 @@
 const uuid = require('uuid/v1');
 const { Pool } = require('pg');
 
-const connectionString = process.env.DATABASE_URL || 'postgres://cuhivfcdndutkq:2d53d780480b6c8823ec069c0a66ea8713e541c981952f9d6e74475b50343ad9@ec2-174-129-229-106.compute-1.amazonaws.com:5432/dfo3oq85ku6g4k';
-
+const connectionString = process.env.DATABASE_URL || 'postgresql://postgres:postgres@localhost:5432/ventti';
 console.log('Connection:', connectionString);
 
 const pool = new Pool({
-    connectionString: process.env.DATABASE_URL,
-    ssl: true
+    connectionString
 });
 
-//Anna pelin tila
+// dummy-tietokanta
+// const storage = {
+//     test: {
+//         score: {
+//             player: 0,
+//             dealer: 0
+//         }
+//     }
+// };
+
+// anna pelin tila
 async function getState(id) {
-    
+    //return storage[id];
     try {
         const res = await pool.query('select data from pelit WHERE id=$1', [id]);
-        if (!res.rowCount) {    //tuntematon id
+        if (!res.rowCount) {    // tuntematon id
             return;
         }
-        return res.rows[0].data;
+        return JSON.parse(res.rows[0].data);
     } catch (e) {
         console.log(e.message);
         throw { error: 'Database error' };
     }
 }
 
-async function setState (id, state) {
+// talleta pelin tila
+async function setState(id, state) {
+    // if (storage[id]) {
+    //     storage[id] = state;
+    //     return state;
+    // } else {
+    //     return;
+    // }
     try {
-        let res = await pool.query("UPDATE pelit SET data =$1 WHERE id =$2", [state, id]);
-        if (!res.rowCount) {
+        const res = await pool.query("UPDATE pelit SET data=$2 WHERE id=$1", [id, state]);
+        if (!res.rowCount) {    // tuntematon id
             return;
         }
-        return state
-    }
-    catch(e) {
+        return state;
+    } catch (e) {
+        console.log(e.message);
         throw { error: 'Database error' };
     }
 }
 
+// luo uusi peli ja anna sen id
 async function newGame() {
     const id = uuid();
-    console.log("ID:  ", id);
-
+    // storage[id] = {};
     try {
-        const res = await pool.query('INSERT INTO pelit (id, data) VALUES ($1, $2) RETURNING id', [id, {}]);
+        const res = await pool.query(`INSERT INTO pelit (id, data) VALUES ($1, $2) RETURNING id`, [id, {}]);
         return res.rows[0].id;
     } catch (e) {
         console.log(e.message);
