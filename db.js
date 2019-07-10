@@ -1,11 +1,12 @@
 const uuid = require('uuid/v1');
 const { Pool } = require('pg');
-const dbURL = DATABASE_URL=$(heroku config:get DATABASE_URL -a afternoon-taiga-73934) your_process;
-const  connectionString = process.env.dbURL;
+
+const connectionString = process.env.DATABASE_URL || 'postgres://cuhivfcdndutkq:2d53d780480b6c8823ec069c0a66ea8713e541c981952f9d6e74475b50343ad9@ec2-174-129-229-106.compute-1.amazonaws.com:5432/dfo3oq85ku6g4k';
+
 console.log('Connection:', connectionString);
 
 const pool = new Pool({
-    connectionString,
+    connectionString: process.env.DATABASE_URL,
     ssl: true
 });
 
