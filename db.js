@@ -1,9 +1,7 @@
 const uuid = require('uuid/v1');
 const { Pool } = require('pg');
 
-const connectionString = process.env.DATABASE_URL; // || 'postgres://cuhivfcdndutkq:2d53d780480b6c8823ec069c0a66ea8713e541c981952f9d6e74475b50343ad9@ec2-174-129-229-106.compute-1.amazonaws.com:5432/dfo3oq85ku6g4k';
-
-//const connectionString = process.env.DATABASE_URL || 'postgresql://postgres:@localhost:5432/ventti';
+const connectionString = process.env.DATABASE_URL;
 
 
 console.log('Connection:', connectionString);
