@@ -88,12 +88,10 @@ function render(state) {
     document.querySelector('#dealer-score').textContent = state.score.dealer;
 }
 async function makeAction(action) {
-    const protocol = 'http://';
-    const host = 'localhost:3000';
     const path = '/api/v1/game/';
     let gameId = "901530b0-7d34-11e9-a199-895479664c37";
     if(localStorage.getItem("gameId") === null) {
-        fetch(protocol + host + path, {
+        fetch(path, {
             method: "POST"
         })
         .then(res => res.json())
