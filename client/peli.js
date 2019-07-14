@@ -107,7 +107,7 @@ async function makeAction(action) {
     }
     
     //http://localhost:3000/api/v1/game/test
-    const url = protocol + host + path + gameId;
+    const url = path + gameId;
     const reqData = {
         action: action
     }
