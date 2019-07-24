@@ -44,7 +44,5 @@ ALTER TABLE ONLY public.pelit
     ADD CONSTRAINT pelit_pkey PRIMARY KEY (id);
 
 
---
--- PostgreSQL database dump complete
---
+
 
